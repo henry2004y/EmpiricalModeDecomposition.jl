@@ -68,10 +68,9 @@ abstract type InterpMethod end
 struct DierckXInterp <: InterpMethod end
 #immutable InterpolationsInterp <: InterpMethod end
 
-function interpolate(knotxvals::Vector, knotyvals::Vector, predictxvals::AbstractVector, m::DierckXInterp, k=3)
-    spl = Dierckx.Spline1D(knotxvals, knotyvals, k=k)
-    #@show spl, predictxvals
-    Dierckx.evaluate(spl,predictxvals)
+function interpolate(knotxvals::Vector, knotyvals::Vector, predictxvals::AbstractVector, m::DierckXInterp)
+    interp = CubicSpline(knotyvals, knotxvals)
+    interp.(predictxvals)
 end
 
 

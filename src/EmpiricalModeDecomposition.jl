@@ -1,7 +1,7 @@
 module EmpiricalModeDecomposition
 
 using Interpolations
-using Dierckx
+using DataInterpolations
 using IterTools
 using Random
 using Statistics
